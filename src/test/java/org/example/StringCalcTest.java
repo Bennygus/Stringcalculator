@@ -16,8 +16,13 @@ public class StringCalcTest {
 
     @Test
 
-    void givenTwoStringInputsShouldReturnTheSum(){
+    void givenThreeStringInputShouldReturnTheSum(){
         assertThat(StringCalc.add("1,2,5")).isEqualTo(8);
+    }
+    @Test
+
+    void givenThreeStringInputWithNewLineShouldReturnTheSum(){
+        assertThat(StringCalc.add("1\n2,5")).isEqualTo(8);
     }
 
 }
