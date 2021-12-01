@@ -7,15 +7,18 @@ public class StringCalc {
 
         String[] splitList= a.split(",");
 
-        int s = Integer.parseInt(splitList[0]);
-        int p = Integer.parseInt(splitList[1]);
+
+        int sum = 0;
+        for (String element:splitList) {
+             sum+=Integer.parseInt(element);
+
+        }
 
 
 
 
-        return s+p;
+        return sum;
     }
-
 
 
 
