@@ -12,5 +12,13 @@ public class StringCalcTest {
         assertThat(StringCalc.add("")).isEqualTo(0);
     }
 
+
+
+    @Test
+
+    void givenTwoStringInputsShouldReturnTheSum(){
+        assertThat(StringCalc.add("1,2")).isEqualTo(3);
+    }
+
 }
 
