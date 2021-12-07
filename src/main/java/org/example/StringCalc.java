@@ -4,18 +4,56 @@ import java.util.ArrayList;
 
 public class StringCalc {
 
+
     public static int add(String inputString){
         if (inputString.length()==0)return 0;
 
+        inputString= checkStringForDelimiters(inputString);
 
-
-        inputString = inputString.replaceAll("//;","");
-        inputString = inputString.replaceAll(";",",");
 
         String[] splitNumberList= inputString.trim().replace("\n",",").split(",");
 
 
         return checkForValidNumbersInStringAndGetSum(splitNumberList);
+    }
+    private static String delimiter;
+
+    private static String checkStringForDelimiters(String inputString) {
+
+        if (inputString.startsWith("//")){
+
+            inputString= inputString.replace("//","");
+
+                 if (inputString.contains("[")&&inputString.contains("]")){
+
+                     inputString = getDelimiterFromSquareBracketsAndReplaceDelimiterForComma(inputString);
+
+                     return inputString;
+                 }
+
+            delimiter = transferEverythingBeforeNewLineInInputString(inputString);
+            inputString= inputString.replace(delimiter,",").replaceFirst(",","");
+
+            return inputString ;
+        }
+
+
+        return inputString;
+    }
+
+    private static String getDelimiterFromSquareBracketsAndReplaceDelimiterForComma(String inputString) {
+        delimiter = transferEverythingBeforeNewLineInInputString(inputString);
+
+        String insideDelimiter = delimiter.substring(inputString.indexOf("[")+1, inputString.indexOf("]"));
+
+        inputString = inputString.replace(insideDelimiter,",").replaceFirst(",","");
+        inputString = inputString.replaceFirst("\\[","");
+        inputString = inputString.replaceFirst("]","");
+        return inputString;
+    }
+
+    private static String transferEverythingBeforeNewLineInInputString(String inputString) {
+        return inputString.substring(0,inputString.indexOf("\n"));
     }
 
 

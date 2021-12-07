@@ -15,8 +15,6 @@ public class StringCalcTest {
         assertThat(StringCalc.add("")).isEqualTo(0);
     }
 
-
-
     @Test
 
     void givenThreeStringNumbersAndCommaAsDelimiterInputShouldReturnTheSum(){
@@ -41,7 +39,6 @@ public class StringCalcTest {
 
         assertEquals("Negatives not allowed: [-2, -55]",result.getMessage());
 
-
     }
 
     @Test
@@ -49,6 +46,11 @@ public class StringCalcTest {
         assertThat(StringCalc.add("1,2000,1000")).isEqualTo(1001);
     }
 
+    @Test
+    void givenAInputsWithNewDelimiter(){
+        assertThat(StringCalc.add("//[***]\n1***2***3")).isEqualTo(6);
+
+    }
 
 
 }
