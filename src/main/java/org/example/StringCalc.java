@@ -2,16 +2,20 @@ package org.example;
 
 public class StringCalc {
 
-    public static int add(String a){
-        if (a.length()==0)return 0;
+    public static int add(String inputString){
+        if (inputString.length()==0)return 0;
 
 
-        String[] splitList= a.replace("\n",",").split(",");
+
+        inputString = inputString.replaceAll("//;","");
+        inputString = inputString.replaceAll(";",",");
+
+        String[] splitList= inputString.trim().replace("\n",",").split(",");
 
 
         int sum = 0;
         for (String element:splitList) {
-             sum+=Integer.parseInt(element);
+            sum+=Integer.parseInt(element);
 
         }
 
