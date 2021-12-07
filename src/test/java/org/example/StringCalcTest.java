@@ -2,7 +2,10 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class StringCalcTest {
 
@@ -28,6 +31,16 @@ public class StringCalcTest {
     @Test
     void givenTwoNumbersAndSemicolonAsNewDelimiterInputWithNewLineShouldReturnTheSum(){
         assertThat(StringCalc.add("//;\n1;2")).isEqualTo(3);
+
+    }
+
+    @Test( )
+    void givenNegativNumbersShouldReturnIllegalArgumentException(){
+
+        var result =  assertThrows(IllegalArgumentException.class,()-> StringCalc.add("1,2,-2,-55"));
+
+        assertEquals("Negatives not allowed: [-2, -55]",result.getMessage());
+
 
     }
 
