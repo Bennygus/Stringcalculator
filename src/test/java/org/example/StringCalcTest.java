@@ -44,6 +44,11 @@ public class StringCalcTest {
 
     }
 
+    @Test
+    void givenNumbersOver1000ShouldBeIgnored(){
+        assertThat(StringCalc.add("1,2000,1000")).isEqualTo(1001);
+    }
+
 
 
 }

@@ -34,18 +34,26 @@ public class StringCalc {
     private static int iterateEveryNumberInStringToGetSum(String[] splitNumberList, int sum, ArrayList<Integer> negativNumbersList) {
         for (String numberElement: splitNumberList) {
 
-            int valueOfNumberElement = getValueOfStringNumbers(negativNumbersList, numberElement);
-
+            Integer valueOfNumberElement = getValueOfStringNumbers(negativNumbersList, numberElement);
+            if (valueIsOver1000IgnoreIt(valueOfNumberElement)) continue;
 
             sum +=valueOfNumberElement;
         }
         return sum;
     }
 
-    private static int getValueOfStringNumbers(ArrayList<Integer> negativNumbersList, String numberElement) {
+    private static boolean valueIsOver1000IgnoreIt(Integer valueOfNumberElement) {
+        return valueOfNumberElement == null;
+    }
+
+    private static Integer getValueOfStringNumbers(ArrayList<Integer> negativNumbersList, String numberElement) {
         int valueOfNumberElement = Integer.parseInt(numberElement);
+
         if (valueOfNumberElement<0){
             negativNumbersList.add(valueOfNumberElement);
+        }
+        if (valueOfNumberElement>1000){
+            return null;
         }
         return valueOfNumberElement;
     }
