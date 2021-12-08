@@ -14,7 +14,7 @@ public class StringCalc {
 
         String[] splitNumberList= inputString.replaceAll(REPLACES_ALL_EXCEPT_ANY_POSITIV_AND_NEGATIV_NUMBERS,",").split(",");
 
-              return checkForValidNumbersInStringAndGetSum(splitNumberList);
+        return checkForValidNumbersInStringAndGetSum(splitNumberList);
     }
 
 
@@ -35,19 +35,15 @@ public class StringCalc {
 
             Integer valueOfNumberElement = getValueOfStringNumbers(negativNumbersList, numberElement);
 
-            if (valueIsEmptyOrOverThousandIgnoreIt(valueOfNumberElement)) continue;
-
             sum +=valueOfNumberElement;
         }
         return sum;
     }
 
-    private static boolean valueIsEmptyOrOverThousandIgnoreIt(Integer valueOfNumberElement) {
-        return valueOfNumberElement == null;
-    }
+
 
     private static Integer getValueOfStringNumbers(ArrayList<Integer> negativNumbersList, String numberElement) {
-        if (numberElement.isEmpty())return null;
+        if (numberElement.isEmpty())return 0;
 
         int valueOfNumberElement = Integer.parseInt(numberElement);
 
@@ -56,7 +52,7 @@ public class StringCalc {
         }
 
         if (valueOfNumberElement>1000){
-            return null;
+            return 0;
         }
         return valueOfNumberElement;
     }
