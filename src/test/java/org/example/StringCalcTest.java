@@ -52,6 +52,14 @@ public class StringCalcTest {
 
     }
 
+    @Test
+    void givenAInputsWithTwoDelimiters(){
+        //* asterisk
+        assertThat(StringCalc.add("//[***][%]\n1***2%1%3")).isEqualTo(7);
+
+
+    }
+
 
 }
 

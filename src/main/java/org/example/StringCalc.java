@@ -1,14 +1,15 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StringCalc {
-
+    private static final String DELIMITER_FOR_SQUARE_BRACKETS ="[\\[].*?[]]";
 
     public static int add(String inputString){
         if (inputString.length()==0)return 0;
 
-        inputString= checkStringForDelimiters(inputString);
+       inputString= checkStringForDelimiters(inputString);
 
 
         String[] splitNumberList= inputString.trim().replace("\n",",").split(",");
@@ -43,12 +44,16 @@ public class StringCalc {
 
     private static String getDelimiterFromSquareBracketsAndReplaceDelimiterForComma(String inputString) {
         delimiter = transferEverythingBeforeNewLineInInputString(inputString);
+        long delimiterCounter =delimiter.chars().filter(ch -> ch == '['). count();
 
-        String insideDelimiter = delimiter.substring(inputString.indexOf("[")+1, inputString.indexOf("]"));
+        for (int i =0;i<delimiterCounter;i++) {
+            String insideDelimiter = delimiter.substring(inputString.indexOf("[") + 1, inputString.indexOf("]"));
+            delimiter = delimiter.replaceFirst(DELIMITER_FOR_SQUARE_BRACKETS, "");
 
-        inputString = inputString.replace(insideDelimiter,",").replaceFirst(",","");
-        inputString = inputString.replaceFirst("\\[","");
-        inputString = inputString.replaceFirst("]","");
+            inputString = inputString.replace(insideDelimiter, ",").replaceFirst(",", "");
+            inputString = inputString.replaceFirst("\\[", "");
+            inputString = inputString.replaceFirst("]", "");
+        }
         return inputString;
     }
 
