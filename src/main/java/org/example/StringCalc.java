@@ -14,11 +14,10 @@ public class StringCalc {
 
         String[] splitNumberList= inputString.replaceAll(REPLACES_ALL_EXCEPT_ANY_POSITIV_AND_NEGATIV_NUMBERS,",").split(",");
 
-        return checkForValidNumbersInStringAndGetSum(splitNumberList);
+        return checkForValidNumbersInString(splitNumberList);
     }
 
-
-    private static int checkForValidNumbersInStringAndGetSum(String[] splitNumberList) {
+    private static int checkForValidNumbersInString(String[] splitNumberList) {
         int sum = 0;
         ArrayList<Integer> negativNumbersList= new ArrayList<>();
 
